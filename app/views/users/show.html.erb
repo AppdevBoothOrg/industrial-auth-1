@@ -13,7 +13,9 @@
 <% @user.own_photos.each do |photo| %>
   <div class="row mb-4">
     <div class="col-md-6 offset-md-3">
-      <%= render "photos/photo", photo: photo %>
+      <% if current_user.accepted_sent_follow_requests.find_by(recipient_id: @user.id) != nil || !@user.private? %>
+        <%= render "photos/photo", photo: photo %>
+      <% end %>
     </div>
   </div>
 <% end %>

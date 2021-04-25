@@ -102,8 +102,10 @@
           <%= link_to follow_request, method: :delete, class: "btn btn-outline-secondary btn-block" do %>
             <% if follow_request.pending? %>
               Un-request
-            <% else %>
+            <% elsif follow_request.accepted? %>
               Un-follow
+            <% else %>
+              Rejected
             <% end %>
           <% end %>
         <% else %>
