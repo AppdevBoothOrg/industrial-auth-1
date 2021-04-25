@@ -15,6 +15,7 @@
     </div>
 
     <div class="row mb-4">
+
       <div class="col">
         <%=
           link_to "#",
@@ -49,22 +50,25 @@
         <% end %>
       </div>
 
-      <div class="col">
-        <%=
-          link_to "#",
-            data: { 
-              toggle: "modal", 
-              target: "##{dom_id(user)}_pending"
-            } do %>
+      <% if current_user.username == user.username %>
+        <div class="col">
+          <%=
+            link_to "#",
+              data: { 
+                toggle: "modal", 
+                target: "##{dom_id(user)}_pending"
+              } do %>
 
-          <span class="font-weight-bold">
-            <%= user.pending.size %>
-          </span>
-          
-          pending
+            <span class="font-weight-bold">
+              <%= user.pending.size %>
+            </span>
+            
+            pending
 
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% end %>
+
     </div>
 
     <div class="row mb-3">
@@ -143,11 +147,12 @@
     description: "following",
     target: "#{dom_id(user)}_following"
 %>
-
-<%=
-  render "users/connected_users_modal.html.erb",
-    user: user,
-    connected_users: user.pending,
-    description: "pending",
-    target: "#{dom_id(user)}_pending"
-%>
+<% if current_user.username == user.username %>
+  <%=
+    render "users/connected_users_modal.html.erb",
+      user: user,
+      connected_users: user.pending,
+      description: "pending",
+      target: "#{dom_id(user)}_pending"
+  %>
+<% end %>
