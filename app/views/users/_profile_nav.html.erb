@@ -7,9 +7,11 @@
       
       Posts
       
-      <span class="badge badge-pill badge-secondary">
-        <%= user.own_photos.count %>
-      </span>
+      <% if ( current_user.accepted_sent_follow_requests.find_by(recipient_id: @user.id) != nil || !@user.private? ) || current_user == @user %>
+        <span class="badge badge-pill badge-secondary">
+          <%= user.own_photos.count %>
+        </span>
+      <% end %>
     <% end %>
   </li>
 
@@ -19,10 +21,11 @@
         class: "nav-link" do %>
 
       Liked
-      
-      <span class="badge badge-pill badge-secondary">
-        <%= user.likes.count %>
-      </span>
+      <% if ( current_user.accepted_sent_follow_requests.find_by(recipient_id: @user.id) != nil || !@user.private? ) || current_user == @user %>
+        <span class="badge badge-pill badge-secondary">
+          <%= user.likes.count %>
+        </span>
+      <% end %>
     <% end %>
   </li>
 </ul> 
