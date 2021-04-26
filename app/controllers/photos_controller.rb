@@ -20,7 +20,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
-    redirect_back fallback_location: root_url, alert: "You're not authorized for that."
+    
   end
 
   # POST /photos or /photos.json
