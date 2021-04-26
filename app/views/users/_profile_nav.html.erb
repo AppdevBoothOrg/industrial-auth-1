@@ -7,7 +7,7 @@
       
       Posts
       
-      <% if current_user.accepted_sent_follow_requests.find_by(recipient_id: user.id) != nil || !user.private? %>
+      <% if ( current_user.accepted_sent_follow_requests.find_by(recipient_id: @user.id) != nil || !@user.private? ) || current_user == @user %>
         <span class="badge badge-pill badge-secondary">
           <%= user.own_photos.count %>
         </span>
@@ -21,7 +21,7 @@
         class: "nav-link" do %>
 
       Liked
-      <% if current_user.accepted_sent_follow_requests.find_by(recipient_id: user.id) != nil || !user.private? %>
+      <% if ( current_user.accepted_sent_follow_requests.find_by(recipient_id: @user.id) != nil || !@user.private? ) || current_user == @user %>
         <span class="badge badge-pill badge-secondary">
           <%= user.likes.count %>
         </span>

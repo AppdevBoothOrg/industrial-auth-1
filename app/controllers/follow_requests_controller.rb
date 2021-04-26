@@ -4,19 +4,23 @@ class FollowRequestsController < ApplicationController
   # GET /follow_requests or /follow_requests.json
   def index
     @follow_requests = FollowRequest.all
+    redirect_back fallback_location: root_url, alert: "You're not authorized for that."
   end
 
   # GET /follow_requests/1 or /follow_requests/1.json
   def show
+    redirect_back fallback_location: root_url, alert: "You're not authorized for that."
   end
 
   # GET /follow_requests/new
   def new
     @follow_request = FollowRequest.new
+    redirect_back fallback_location: root_url, alert: "You're not authorized for that."
   end
 
   # GET /follow_requests/1/edit
   def edit
+    redirect_back fallback_location: root_url, alert: "You're not authorized for that."
   end
 
   # POST /follow_requests or /follow_requests.json
@@ -33,6 +37,7 @@ class FollowRequestsController < ApplicationController
         format.json { render json: @follow_request.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # PATCH/PUT /follow_requests/1 or /follow_requests/1.json

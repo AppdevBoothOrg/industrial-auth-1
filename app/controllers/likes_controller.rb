@@ -4,19 +4,23 @@ class LikesController < ApplicationController
   # GET /likes or /likes.json
   def index
     @likes = Like.all
+    redirect_back fallback_location: root_url, alert: "You're not authorized for that."
   end
 
   # GET /likes/1 or /likes/1.json
   def show
+    redirect_back fallback_location: root_url, alert: "You're not authorized for that."
   end
 
   # GET /likes/new
   def new
     @like = Like.new
+    redirect_back fallback_location: root_url, alert: "You're not authorized for that."
   end
 
   # GET /likes/1/edit
   def edit
+    redirect_back fallback_location: root_url, alert: "You're not authorized for that."
   end
 
   # POST /likes or /likes.json

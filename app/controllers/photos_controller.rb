@@ -5,10 +5,12 @@ class PhotosController < ApplicationController
   # GET /photos or /photos.json
   def index
     @photos = Photo.all
+    redirect_back fallback_location: root_url, alert: "You're not authorized for that."
   end
 
   # GET /photos/1 or /photos/1.json
   def show
+    redirect_back fallback_location: root_url, alert: "You're not authorized for that."
   end
 
   # GET /photos/new
@@ -18,6 +20,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
+    redirect_back fallback_location: root_url, alert: "You're not authorized for that."
   end
 
   # POST /photos or /photos.json
